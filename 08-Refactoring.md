@@ -67,18 +67,124 @@ I would add:
 
 * co-ordinate with team (and maybe author) before refactoring
 
-## A few patterns
+## A few problems
 
-* Extract method
-* Move method
-* Rename method
-* Remove Dead Code 
-* Decompose Conditional
-* Consolidate Conditional Expression
-* Parameterize Function
-* Introduce Parameter Object
-* Hide Delegate
-* Encapsulate Collection
+Code bloat:
+
+* long methods
+* large classes
+* primitive obsession
+* long parameter list
+
+Change preventers:
+
+* divergent change
+
+Dispensables:
+
+* comments
+* duplicate code
+* dead code
+* speculative generality
+
+Couples:
+
+* feature envy
+* middle man
+* message chains
+
+## A few techniques
+
+### Improve methods
+
+* extract methods
+* inline
+* move
+* rename
+
+### Remove dead code
+
+* identify unused code
+* mostly after implementation of larger features
+
+### Decompose Conditional
+
+* make conditionals easier to read
+
+```python
+if date.before(SUMMER_START) or date.after(SUMMER_END):
+    charge = quantity * winterRate + winterServiceCharge
+else:
+    charge = quantity * summerRate
+
+# better
+
+if isSummer(date):
+    charge = summerCharge(quantity)
+else:
+    charge = winterCharge(quantity)
+
+```
+
+* remove control flags (use break or continue instead)
+* quick poll: anyone used `for ... else` in Python?
+
+
+### Introduce Null Object
+
+```python
+if customer is None:
+    plan = BillingPlan.basic()
+else:
+    plan = customer.getPlan()
+
+# better
+
+class NullCustomer(Customer):
+
+    def isNull(self):
+        return True
+
+    def getPlan(self):
+        return self.NullPlan()
+
+    # Some other NULL functionality.
+
+# Replace null values with Null-object.
+customer = order.customer or NullCustomer()
+
+# Use Null-object as if it's normal subclass.
+plan = customer.getPlan()
+```
+
+
+### Parameterize Function
+
+* after two or more special cases, a parameter may be approriate
+
+```
+def run_once():
+
+def run_twice():
+
+# better
+
+def run(n=1):
+```
+
+### Introduce Parameter Object
+
+* group related values into an own object
+
+### Hide Delegate
+
+> If a caller uses object A to get to object B and the called explicity call
+> object B - then maybe delegate calls to B from A - so the caller only deals
+> with a single object.q
+
+### Encapsulate Collection
+
+* instead of exposing a collection, add methods and encapsulate details
 
 
 ## Some notes from Refactoring to Patterns
