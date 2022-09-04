@@ -839,9 +839,8 @@ Open source has various pragmatic aspects:
 
 ----
 
-Sidenote:
+What do you think?
 
-Question: Which approach or technique of clean code do you find easily
+> Question: Which approach or technique of clean code do you find easily
 applicable? Which one not?
 
-* [https://etherpad.wikimedia.org/p/cleancodepython-20201006](https://etherpad.wikimedia.org/p/cleancodepython-20201006)
