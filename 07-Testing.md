@@ -56,7 +56,7 @@ The test would pass, but not print anything on this successful test.
 ```
 platform linux -- Python 3.7.8, pytest-6.1.1, py-1.9.0, pluggy-0.13.1
 rootdir: /home/tir/code/miku/cleancodepython/Snippets/TestingBasic
-collected 1 item                                                                                                                                                                                                                              
+collected 1 item                                             
 
 test_fixture.py .                                                            [100%]
 ```

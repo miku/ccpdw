@@ -245,49 +245,154 @@ Case study: A DSL coupled with a backend storage system (SM).
 
 * from aerospace industry
 
-#### smallest data structure to fit the problem (e.g. graph can be a dictionary)
+> “Our aim,” he said, “is to get results cheaper, sooner, and better through
+> application of common sense to tough problems. If it works, don’t fix it.”
+> “Keep it simple, stupid—KISS—is our constant reminder.” -- [Biographical Memoir](http://www.nasonline.org/publications/biographical-memoirs/memoir-pdfs/johnson-clarence.pdf#page=13)
+
+#### Smallest data structure to fit the problem
+
+Quick question:
+
+You are tasked to implement depth-first search on a graph. How could you
+implement a graph?
 
 ### EAFP and LBYL
 
-#### python encourages EAFP
+Python prefers the style: easier to ask for forgiveness than permission, or EAFP for short.
 
-### composition and inheritance
+Example:
 
-#### when to use inheriance -- http package
+```python
+data = {
+    "a": 1,
+    "b": 2,
+}
 
-#### inheritance anti-patterns
+# Works, LBYL style (https://docs.python.org/3/glossary.html#term-lbyl)
+if data.has_key("a"):
+    v = data["a"]
+else:
+    do_something_else()
 
-#### multiple inheritance and MRO
+# Better, following EAFP (https://docs.python.org/3/glossary.html#term-eafp)
+try:
+    v = data["a"]
+except KeyError:
+    do_something_else()
+```
+
+
+### Composition and inheritance
+
+Example for sensible inheritance:
+
+* socketserver and http packages: [socketserver.py](https://github.com/python/cpython/blob/ecfff63e06e77e22035a7f7caa26986f033f3aea/Lib/socketserver.py#L672-L709), [server.py](https://github.com/python/cpython/blob/main/Lib/http/server.py)
+
+```python
+
+"""
+...
+There are five classes in an inheritance diagram, four of which represent
+synchronous servers of four types:
+        +------------+
+        | BaseServer |
+        +------------+
+              |
+              v
+        +-----------+        +------------------+
+        | TCPServer |------->| UnixStreamServer |
+        +-----------+        +------------------+
+              |
+              v
+        +-----------+        +--------------------+
+        | UDPServer |------->| UnixDatagramServer |
+        +-----------+        +--------------------+
+...
+"""
+
+class HTTPServer(socketserver.TCPServer):
+
+    allow_reuse_address = 1    # Seems to make sense in testing environment
+
+    def server_bind(self):
+        """Override server_bind to store the server name."""
+        socketserver.TCPServer.server_bind(self)
+        host, port = self.server_address[:2]
+        self.server_name = socket.getfqdn(host)
+        self.server_port = port
+
+
+class ThreadingHTTPServer(socketserver.ThreadingMixIn, HTTPServer):
+    daemon_threads = True
+```
+
+A mixin here adds threading functionality (but not more).
+
+#### Inheritance related anti-patterns
+
+* Anemic Domain Model
+  * data and related behaviour in two separate classes
+* BaseBean (no beans in Python, though)
+  * you may inherit from a dictionary to get lookup functionality (rather, use a dictionary)
+* Circle-Ellipsis problem (or Square-Rectangle Problem) - violated LSP ([...] It
+  is only when derived types are completely substitutable for their base types
+  [...])
+
+#### Multiple inheritance and MRO
+
+Python allows multiple inheritance.
+
+* methods are resolved using C3 algorithm
+
+Can make it easy to combine functionality:
+
+```python
+class LoggingDict(dict):
+    def __setitem__(self, key, value):
+        logging.info('Setting %r to %r' % (key, value))
+        super().__setitem__(key, value)
+
+class LoggingOrderedDict(LoggingDict, collections.OrderedDict):
+    pass
+```
 
 #### Mixins
 
-#### example for a simple composition, subclass plus mixin
+* Mixins do provide partial functionality
+* Example: ThreadingMixIn 
 
-### functions and arguments
+### Functions and arguments
 
-#### anything that can be derived should not be passed separately (request)
+* anything that can be derived should not be passed separately (request)
+* use the already aggregated object
 
-#### too many arguments lead to higher coupling
+```python
 
-#### may group parameters
+def f(request.header, request.body):
+  pass
 
-## coding guidelines
+def f(request):
+  header = request.header
+  body = request.body
+```
 
-### naming conventions
+* or use some convential form 
 
-### reveal your intent
+Example:
 
-### avoid noise
+* instead of `f(filename, fh): pass` you can decide, whether you need the
+  filename and file handle as separate parameters
 
-### class names
+#### Too many arguments lead to higher coupling
 
-### exceptions and exception handling
+* in general, too many arguments lead to higher coupling
+* in python, keyword (default) arguments are your friend (example: [pandas.read_csv](https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html))
 
-### variables
 
-## X: improve "ttt" example
+#### Group parameters
 
-## Clean architecture
+* similar to the request example
+* for example config or "option" objects
 
 ## Package design
 
@@ -298,3 +403,42 @@ Case study: A DSL coupled with a backend storage system (SM).
 * linkedin example: shiv
 
 ### Automation with gitlab
+
+```yaml
+# git push sc master => runs CI
+#
+# git tag v0.1.2
+# git push sc --tags => creates package and uploads to Nexus
+
+image: python:3.9.6-slim-buster
+
+stages:
+  - test
+  - deploy
+
+before_script:
+   - pip install --upgrade pip
+   - pip install pytest twine
+
+tests:
+  stage: test
+  script:
+    - pip install backports.csv # try installing this from pypi, nexus may not like the [.]
+    - python setup.py develop --index-url $PYPI_PROXY_URL # faster, less load for pypi
+    - pytest
+  tags: [docker]
+  except:
+    - tags
+
+upload_to_nexus:
+  stage: deploy
+  variables:
+    TWINE_USERNAME: $NEXUS_USERNAME
+    TWINE_PASSWORD: $NEXUS_PASSWORD
+  script:
+    - python setup.py sdist
+    - twine upload --repository-url $NEXUS_REPOSITORY_URL dist/*
+  only:
+    - tags
+  tags: [docker]
+```

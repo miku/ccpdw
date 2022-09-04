@@ -67,21 +67,19 @@ I would add:
 
 * co-ordinate with team (and maybe author) before refactoring
 
-## Patterns
+## A few patterns
 
-* extract method
-* extract interface
-* extract superclass
-* extract subclass
-* pull up method
-* move method
-* rename method
+* Extract method
+* Move method
+* Rename method
+* Remove Dead Code 
+* Decompose Conditional
+* Consolidate Conditional Expression
+* Parameterize Function
+* Introduce Parameter Object
+* Hide Delegate
+* Encapsulate Collection
 
-Other:
-
-* replace inheritance with delegation
-* replace conditional with polymorphism
-* replace type code with subclasses
 
 ## Some notes from Refactoring to Patterns
 
