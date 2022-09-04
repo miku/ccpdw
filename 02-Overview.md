@@ -5,9 +5,7 @@
 
 Before we dive in, what is our take?
 
-* Please, go to the pad and answer in one sentence, or keywords:
-
-https://pad.grossweber.com/HwSmArPjTiWKayZDwzioJg
+* Please, go to the pad and answer briefly, or with keywords:
 
 > Question: How would you describe clean code? Which properties would it have?
 
