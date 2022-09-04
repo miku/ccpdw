@@ -1,10 +1,10 @@
-# Martin Czygan
+# About Me
 
 * software developer, currently working in Leipzig and San Francisco
 * using Python since around 2006
 * co-wrote a book on Pandas (2015)
-* workshops on various topics (Python, Go, Git and data processing)
-* co-host of a programming language user group in Leipzig
+* workshops on various topics (mostly Python, Go, Git and data processing)
+* co-host of a programming language [user group](https://golangleipzig.space/) in Leipzig
 * stack overflow contributor (answering Python questions)
 * open source contributor (https://github.com/miku)
 

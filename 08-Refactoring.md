@@ -48,6 +48,24 @@ Examples of great API designs:
 * hard, not sure if something breaks
 * touches many parts
 
+## Before you refactor
+
+Maybe this can save some time: [https://github.com/97-things/97-things-every-programmer-should-know/blob/master/en/thing_06/README.md](https://github.com/97-things/97-things-every-programmer-should-know/blob/master/en/thing_06/README.md)
+
+* the best approach for restructuring starts by taking stock of the existing codebase and the tests written against that code. 
+* avoid the temptation to rewrite everything
+* many incremental changes are better than one massive change
+
+> side note: git add/reset -p is made for that
+
+* after each iteration, it is important to ensure that the existing tests pass.
+* personal preferences and ego shouldn't get in the way
+* new technology is insufficient reason to refactor
+* remember that humans make mistakes
+
+I would add:
+
+* co-ordinate with team (and maybe author) before refactoring
 
 ## Patterns
 
