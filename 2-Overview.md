@@ -1,7 +1,6 @@
 
 # Overview
 
-
 ## What is clean code?
 
 Before we dive in, what is our take?

@@ -84,9 +84,8 @@ of (coding) details.
 * there is a balance between business and software needs, that is a challenge to find and keep
 
 
-### What other people say
 
-### Q: What is clean code for you?
+
 
 ## Motivation: Software that fits your problem
 
