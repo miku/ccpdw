@@ -136,7 +136,7 @@ quality.
 * deferred PEP-361 (2003): https://peps.python.org/pep-0316/
 * https://github.com/Parquery/icontract
 
-Example: [Examples/Contracts]
+Example: [Snippets/Contracts]
 
 Without specific contract library:
 
@@ -165,7 +165,7 @@ Find the *right level* for your exception.
 
 You can include original exceptions via [PEP-3134](https://peps.python.org/pep-3134/) - "Exception Chaining and Embedded Tracebacks"
 
-> Example: [Example/ExceptionChaining]
+> Example: [Snippets/ExceptionChaining]
 
 > [...] implicit exception context can be supplemented with an explicit cause by using from with `raise`.
 
