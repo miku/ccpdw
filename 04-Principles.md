@@ -230,7 +230,7 @@ Case study: A DSL coupled with a backend storage system (SM).
 ### DRY
 
 * don't repeat yourself
-* there is also the rule of three - use opportunities to abstract or factor out a piece of code
+* there is also the *rule of three* - use opportunities to abstract or factor out a piece of code
 
 ### YAGNI
 
@@ -243,7 +243,7 @@ Case study: A DSL coupled with a backend storage system (SM).
 
 ### KISS
 
-#### from aerospace industry
+* from aerospace industry
 
 #### smallest data structure to fit the problem (e.g. graph can be a dictionary)
 
@@ -287,52 +287,14 @@ Case study: A DSL coupled with a backend storage system (SM).
 
 ## X: improve "ttt" example
 
-## SOLID
+## Clean architecture
 
-### SRP
+## Package design
 
-#### what it says
+* setup.py
 
-#### example
+## Packaging options
 
-### OCP
+* linkedin example: shiv
 
-#### what it says
-
-#### example
-
-### LSP
-
-#### what it says
-
-#### example
-
-### ISP
-
-#### what it says
-
-#### example
-
-### DIP
-
-#### what it says
-
-#### example
-
-## D: give 3 scenarios and ask for the most approriate SOLID principle
-
-## clean architecture
-
-### separation of concerns
-
-### abstractions
-
-## package design
-
-### setup.py
-
-## packaging options
-
-### linkedin example: shiv
-
-### automation with gitlab
+### Automation with gitlab
