@@ -443,7 +443,7 @@ upload_to_nexus:
   tags: [docker]
 ```
 
-## Task
+## Task: Find ways to improve code
 
 This is a basic Tic-Tac-Toe implementation, but it can be improved:
 

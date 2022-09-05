@@ -162,7 +162,7 @@ plan = customer.getPlan()
 
 * after two or more special cases, a parameter may be approriate
 
-```
+```python
 def run_once():
 
 def run_twice():
@@ -214,3 +214,59 @@ Or, Kent Back:
 
 * red, green, refactor
 
+
+## Task: Code with some issues
+
+
+```python
+
+"""
+The following code has some issues, find them and try to correct them.
+
+Note: This class does not have tests (no need to add any for the moment).
+However, real refactoring should be done against tested code.
+"""
+
+import json
+
+class Processor:
+    
+    def __init__(self, data=None, lookup=None):
+        self.data = data
+        
+    def load(self):
+        self.loaded = json.loads(self.data)
+    
+    def filter_by_a(self, records):
+        result = []
+        for record in records:
+            if 'a' in record:
+                for value in result:
+                    if 'a' in value:
+                        break
+                else:
+                    result.append(record)
+        return result
+
+    def filter_by_b(self, records):
+        result = []
+        for record in records:
+            if 'b' in record:
+                for value in result:
+                    if 'b' in value:
+                        break
+                else:
+                    result.append(record)
+        return result
+     
+    def run(self):
+        for record in self.filter_by_a(self.loaded):
+            print(record)
+            
+    
+
+data = '[{"a": 1}, {"b": 2}, {"c": 3}, {"a": 4}, {"b": 5}]'
+processor = Processor(data=data)
+processor.load()
+processor.run() # {"a": 1}
+```
