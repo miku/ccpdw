@@ -128,6 +128,15 @@ Examples:
   [pytest-datafiles](https://pypi.org/project/pytest-datafiles/)
 
 
+## Table Driven Tests
+
+Not a new idea, but popularized a bit more by Go:
+
+* [https://github.com/golang/go/wiki/TableDrivenTests](https://github.com/golang/go/wiki/TableDrivenTests)
+
+* boil down cases to rows in a table
+* can be also pushed out (e.g. to CSV file or similar)
+
 ## Code coverage
 
 Coverage measures the ratio of tested lines of code and lines of code. 100%
@@ -195,3 +204,22 @@ def test_api(mocked_responses):
     assert resp.status_code == 200
 ```
 
+
+## Extra Tools
+
+There are different testing helpers for various circumstances.
+
+Mutation testing:
+
+> [https://github.com/mutpy/mutpy](https://github.com/mutpy/mutpy)
+
+Tries to modify code slightly.
+
+> Mutation testing (or Mutation analysis or Program mutation) evaluates the
+> quality of software tests. Mutation testing involves modifying a program's
+> source code or byte code in small ways. A test suite that does not detect and
+> reject the mutated code is considered defective.
+
+* limited [no pytest support](https://github.com/mutpy/mutpy/issues/17) (but test runner seems ok)
+
+Example: [Snippets/MutPy]
