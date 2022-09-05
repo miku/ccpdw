@@ -32,4 +32,5 @@ class Processor:
 data = '[{"a": 1}, {"b": 2}, {"c": 3}, {"a": 4}, {"b": 5}]'
 records = json.loads(data)
 processor = Processor(records=records)
-processor.run() # {"a": 1}
+for record in processor.filter_by_key('a'):
+    print(record)

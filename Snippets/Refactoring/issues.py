@@ -37,14 +37,11 @@ class Processor:
                 else:
                     result.append(record)
         return result
-     
-    def run(self):
-        for record in self.filter_by_a(self.loaded):
-            print(record)
-            
+                 
     
 
 data = '[{"a": 1}, {"b": 2}, {"c": 3}, {"a": 4}, {"b": 5}]'
 processor = Processor(data=data)
 processor.load()
-processor.run() # {"a": 1}
+for record in processor.filter_by_a(processor.loaded):
+    print(record)

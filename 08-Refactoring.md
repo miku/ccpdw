@@ -19,10 +19,19 @@ Why change code at all:
 * if your business is growing, then business case for more change it there
     * product will exist ten years from now
 
+## Technical Debt
+
+A probably useful metaphor for understanding accumulated issues in projects.
+
+* deadlines
+* no tests
+* insufficient documentation
+* change of requirements
+
 ## Optimize for learning
 
 * try to postpone decisions
-    * the later you have to decide, the more informed your decision will be
+* the later you have to decide, the more informed your decision will be
 
 ## API design
 
@@ -38,10 +47,11 @@ Examples of great API designs:
 
 ## What is a change?
 
-* [ ] adding a function
-* [ ] removing a function
-* [ ] changing a function
+Examples:
 
+* [x] adding a function
+* [x] removing a function
+* [x] changing a function
 
 ## Why not change?
 
@@ -69,29 +79,31 @@ I would add:
 
 ## A few problems
 
-Code bloat:
+### Code bloat
 
 * long methods
 * large classes
 * primitive obsession
 * long parameter list
 
-Change preventers:
+![](static/long_function.png)
 
-* divergent change
+### Change preventers
 
-Dispensables:
+* divergent change (changes across many different methods)
+
+### Dispensables
 
 * comments
 * duplicate code
 * dead code
 * speculative generality
 
-Couples:
+### Couples
 
-* feature envy
-* middle man
-* message chains
+* feature envy (object access data of another object more than its own)
+* middle man (a thin class, mostly delegating to another)
+* message chains (like `a.b.c.d()`)
 
 ## A few techniques
 
@@ -258,15 +270,12 @@ class Processor:
                 else:
                     result.append(record)
         return result
-     
-    def run(self):
-        for record in self.filter_by_a(self.loaded):
-            print(record)
-            
+                 
     
 
 data = '[{"a": 1}, {"b": 2}, {"c": 3}, {"a": 4}, {"b": 5}]'
 processor = Processor(data=data)
 processor.load()
-processor.run() # {"a": 1}
+for record in self.filter_by_a(self.loaded):
+    print(record)
 ```

@@ -204,6 +204,14 @@ def test_api(mocked_responses):
     assert resp.status_code == 200
 ```
 
+## Other Plugins
+
+* [1402](https://pypi.org/search/?q=name%3Apytest&o=-created) projects with "pytest" in their name (not all plugins, presumably)
+
+A few interesting ones may be:
+
+* [SeleniumBase](https://github.com/seleniumbase/SeleniumBase) - for web application testing
+* [pytest-clarity](https://github.com/darrenburns/pytest-clarity) - for improved diffs
 
 ## Extra Tools
 
@@ -220,6 +228,7 @@ Tries to modify code slightly.
 > source code or byte code in small ways. A test suite that does not detect and
 > reject the mutated code is considered defective.
 
-* limited [no pytest support](https://github.com/mutpy/mutpy/issues/17) (but test runner seems ok)
+* limited [pytest support](https://github.com/mutpy/mutpy/issues/17) (but test runner seems ok)
 
 Example: [Snippets/MutPy]
+

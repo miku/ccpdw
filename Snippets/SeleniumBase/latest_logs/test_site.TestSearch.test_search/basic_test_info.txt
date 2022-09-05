@@ -1,0 +1,27 @@
+test_site.py::TestSearch::test_search
+--------------------------------------------------------------------
+Last Page: https://www.google.com/
+  Browser: chrome (106.0.5249.21 / headless)
+   Driver: chromedriver (106.0.5249.21)
+Timestamp: 1662419769  (Unix Timestamp)
+     Date: Tuesday, 6 September 2022
+     Time: 1:16:09 AM  (CEST, UTC+01:00)
+--------------------------------------------------------------------
+Traceback: File "/usr/lib/python3.8/unittest/case.py", line 676, in run
+    self._callTestMethod(testMethod)
+  File "/usr/lib/python3.8/unittest/case.py", line 633, in _callTestMethod
+    method()
+  File "/home/tir/code/miku/ccpydw/Snippets/SeleniumBase/test_site.py", line 19, in test_search
+    self.type("#q", "pytest")
+  File "/home/tir/.local/lib/python3.8/site-packages/seleniumbase/fixtures/base_case.py", line 798, in type
+    self.update_text(selector, text, by=by, timeout=timeout, retry=retry)
+  File "/home/tir/.local/lib/python3.8/site-packages/seleniumbase/fixtures/base_case.py", line 626, in update_text
+    element = self.wait_for_element_visible(
+  File "/home/tir/.local/lib/python3.8/site-packages/seleniumbase/fixtures/base_case.py", line 7671, in wait_for_element_visible
+    return page_actions.wait_for_element_visible(
+  File "/home/tir/.local/lib/python3.8/site-packages/seleniumbase/fixtures/page_actions.py", line 423, in wait_for_element_visible
+    timeout_exception(NoSuchElementException, message)
+  File "/home/tir/.local/lib/python3.8/site-packages/seleniumbase/fixtures/page_actions.py", line 192, in timeout_exception
+    raise exc(msg)
+Exception: Message: 
+ Element {#q} was not present after 10 seconds!
