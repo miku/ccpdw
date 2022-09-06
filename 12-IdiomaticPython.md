@@ -35,6 +35,14 @@ for i, v in enumerate(values):
     print(i, v)
 ```
 
+----
+
+> Tour: Magic Methods
+
+* [notebooks/Magic_Methods_Part_1.ipynb](notebooks/Magic_Methods_Part_1.ipynb)
+* [notebooks/Magic_Methods_Part_2.ipynb](notebooks/Magic_Methods_Part_2.ipynb)
+
+----
 
 ## Decorators
 
