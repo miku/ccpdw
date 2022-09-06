@@ -132,7 +132,6 @@ significant indentation.
 [...] collects basic metrics over the text:
 
 * count how often each word (as is, no need to normalize) appears
-* collect short words (e.g. 4 chars or shorter)
 * collect long words (e.g. 11 chars or longer)
 
 It can output the following:
@@ -145,6 +144,5 @@ the 2
 Python 2
 From 1
 
-short words: ['code', 'of', 'Its']
 long words: ['readability', 'high-level,', 'indentation.']
 ```
