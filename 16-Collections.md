@@ -137,7 +137,7 @@ significant indentation.
 It can output the following:
 
 * top 3 most common words
-* a random sample (e.g. of 3) of the shortest and the longest words
+* a random sample (e.g. of 3) of the longest words
 
 ```
 the 2
