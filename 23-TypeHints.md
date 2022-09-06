@@ -184,10 +184,10 @@ movies: List[Book] = [
 
 i.e. is `List[Cat]` a subclass of `List[Amimal]` -- if so, then the list type contructor is covariant.
 
+## Forward References
 
-## Numeric Tower
-
-
+> When a type hint contains names that have not been defined yet, that
+> definition may be expressed as a string literal, to be resolved later.
 
 ## List or list
 
@@ -195,11 +195,69 @@ i.e. is `List[Cat]` a subclass of `List[Amimal]` -- if so, then the list type co
 > the typing module. Instead, we'll be able to use the standard tuple, list, and
 > dict types for annotation.
 
-## Basic Operations
+
+## Union Types
+
+```python
+from typing import Union
+
+def handle_employees(e: Union[Employee, Sequence[Employee]]) -> None:
+    if isinstance(e, Employee):
+        e = [e]
+    ...
+```
+
+Union type can represent an optional type as well:
+
+```python
+def handle_employee(e: Union[Employee, None]) -> None: ...
+```
+
+Which got an own shorthand:
+
+```python
+from typing import Optional
+
+def handle_employee(e: Optional[Employee]) -> None: ...
+```
+
+## Any Type
+
+> A special kind of type is Any. Every type is consistent with Any. It can be
+> considered a type that has all values and all methods. Note that Any and
+> builtin type object are completely different.
+
+It's the type used implicitly:
+
+> A function parameter without an annotation is assumed to be annotated with Any.
+
+
+## NoReturn Type
+
+```python
+from typing import NoReturn
+
+def stop() -> NoReturn:
+    raise RuntimeError('no way')
+```
+
+----
+
+## Stub Files
+
+
+> Stub files are files containing type hints that are only for use by the type
+> checker, not at runtime. There are several use cases for stub files:
+
+* Extension modules
+* Third-party modules whose authors have not yet added type hints
+* Standard library modules for which type hints have not yet been written
+* Modules that must be compatible with Python 2 and 3
+* Modules that use annotations for other purposes
 
 
 
-
+----
 
 ## Task
 
