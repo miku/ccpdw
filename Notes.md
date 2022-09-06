@@ -17,3 +17,8 @@
 * Task: Implement a context manager
 * Task: Improve Class design (dunder methods)
 * Task: Try to improve this code snippet
+
+----
+
+# Tasks Day 3
+

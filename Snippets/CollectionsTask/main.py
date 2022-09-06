@@ -8,14 +8,14 @@ language. Its design philosophy emphasizes code readability with the use of
 significant indentation. 
 """
 
-words = collections.defaultdict(set)
+words = collections.defaultdict(set) 
 freq = collections.Counter()
 for word in s.split():
     freq[word] += 1
-    if len(word) < 5:
-        words["short"].add(word)
-    elif len(word) > 10:
+    if len(word) > 10:
         words["long"].add(word)
+    elif len(word) < 5:
+        words["short"].add(word)
 
 for w, f in freq.most_common(n=3):
     print(w, f)
