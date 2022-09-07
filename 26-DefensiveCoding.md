@@ -15,3 +15,17 @@
 * timeouts
 * retries
 * memory contraints
+* overflows
+* denial of service
+
+## Reviews
+
+* code review
+* web application security risks: https://owasp.org/www-project-top-ten/
+* proxies
+
+## Security
+
+* validate user input
+* fail fast
+

@@ -255,6 +255,9 @@ def stop() -> NoReturn:
 * Modules that must be compatible with Python 2 and 3
 * Modules that use annotations for other purposes
 
+Generated with:
+
+* [](https://mypy.readthedocs.io/en/stable/stubgen.html)
 
 
 ## When to use type checking?
@@ -329,15 +332,52 @@ SetupDone = NewType('SetupDone', Setup)
 
 * restrict a type from changing its value
 
+
+## Collections
+
+* use generic collection annotations
+* https://docs.python.org/3/library/typing.html#generic-concrete-collections
+* Dict, List, Set, FrozenSet, ...
+
+
+## Dictionaries
+
+* use [TypedDict](https://docs.python.org/3/library/typing.html#typing.TypedDict) to annotate a dictionary
+
+```python
+class Point2D(TypedDict):
+    x: int
+    y: int
+    label: str
+
+a: Point2D = {'x': 1, 'y': 2, 'label': 'good'}  # OK
+b: Point2D = {'z': 3, 'label': 'bad'}           # Fails type check
+
+assert Point2D(x=1, y=2, label='first') == dict(x=1, y=2, label='first')
+```
+
+* model more complex structures, e.g. api responses
+
+
+
+
 ## Other considerations
 
 * try to make invalid states unrepresentable
 
 Example: Split a type carrying both a value and error conditions into two parts.
 
-----
-
-## Task
 
 
+## Other tools
 
+* pyre
+* pysa
+
+> Pyre ships with Pysa, a security focused static analysis tool we've built to
+> reason about data flows in Python applications at scale.
+
+Allows to mark tainted code, e.g. a source (user input) and sinks (shell calls)
+to check for possible remove code executions.
+
+Input needs to be sanitized, and can be marked manually.
