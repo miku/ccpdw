@@ -13,3 +13,4 @@ class User(BaseModel):
 Models support a variety of extra methods, e.g. for exporting like `json`,
 `dict` or JSON schema. Validation can be circumvented with `construct`.
 
+Examples: [Snippets/Pydantic](Snippets/Pydantic)

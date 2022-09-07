@@ -277,3 +277,7 @@ Run metrics:
 Files skipped (0):
 ```
 
+## Commit hooks
+
+* use commit hooks to run one or more style or auditing tools
+* balance between warnings and actionable advice

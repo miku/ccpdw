@@ -257,8 +257,87 @@ def stop() -> NoReturn:
 
 
 
+## When to use type checking?
+
+* public APIs, library entry points
+* highlight a more complicated piece of logic
+* discover bugs and inconsistencies
+
+
+## A few techniques
+
+Beyond basic annotations, there are a few ways to constrain types.
+
+## Optional
+
+```python
+from typing import Optional
+
+string_or_none: Optional[str] = "abc"
+```
+
+Optional is a shorthand for Union of `None` and a type.
+
+* helpful hint
+* will lead to mypy warnings when e.g. methods are called on an optional type before `None` check
+
+## Union
+
+```python
+from typing import Union
+
+def fetch(k:int = 0) -> Union[int, str]:
+    if k == 0:
+        return 0
+    else:
+        return "nonzero"
+```
+
+* disparate return types
+* similar to "Optional", but maybe carrying error messages
+* handling different user input
+* backwards compatibilty
+    
+## Literal
+
+* help to reduce number of valid values
+
+Example: [Snippets/TypeHints](Snippets/TypeHints)
+
+## NewType
+
+* creates a distinct type
+* `Derived = NewType('Derived', Base)`
+
+```python
+from typing import NewType
+
+UserId = NewType('UserId', int)
+some_id = UserId(524313)
+```
+
+* can help to model stages of an object
+
+> Maybe we have a setup type that goes to different stages, before it is done.
+> We could distinguish the same object during this cycle.
+
+```python
+SetupDone = NewType('SetupDone', Setup)
+```
+
+## Final
+
+* restrict a type from changing its value
+
+## Other considerations
+
+* try to make invalid states unrepresentable
+
+Example: Split a type carrying both a value and error conditions into two parts.
+
 ----
 
 ## Task
+
 
 

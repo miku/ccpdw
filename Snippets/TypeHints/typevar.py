@@ -7,3 +7,4 @@ def first(l: Sequence[T]) -> T:   # Generic function
 
 
 first([1, 2, 3])
+
