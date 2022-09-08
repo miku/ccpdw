@@ -16,7 +16,7 @@ Various types of functions:
 
 
 
-# Task
+## Task
 
 Implement a truth table printer for an arbitrary boolean expression. Something
 that looks like this. In the best case, the formula can be any valid boolean
