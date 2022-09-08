@@ -1,2 +1,30 @@
-# ccpdw
-Clean Code Python (dw)
+# Notes on Clean Code with Python
+
+Ideas, techniques and tools to improve Python code.
+
+* [Introduction](01-Introduction.md)
+* [Overview](02-Overview.md)
+* [Motivation](03-Motivation.md)
+* [Principles](04-Principles.md)
+* [PrinciplesCont](05-PrinciplesCont.md)
+* [TipsSoftwareDesign](06-TipsSoftwareDesign.md)
+* [Testing](07-Testing.md)
+* [Refactoring](08-Refactoring.md)
+* [Docs](09-Docs.md)
+* [Anti-Patterns](10-Anti-Patterns.md)
+* [DesignPatterns](11-DesignPatterns.md)
+* [IdiomaticPython](12-IdiomaticPython.md)
+* [Generators](13-Generators.md)
+* [Decorators](14-Decorators.md)
+* [Itertools](15-Itertools.md)
+* [Collections](16-Collections.md)
+* [Functools](17-Functools.md)
+* [Slots](18-Slots.md)
+* [Exceptions](19-Exceptions.md)
+* [ShortTweaks](20-ShortTweaks.md)
+* [Extra-CodeOrganisation](21-Extra-CodeOrganisation.md)
+* [CodeQuality](22-CodeQuality.md)
+* [TypeHints](23-TypeHints.md)
+* [Pydantic](24-Pydantic.md)
+* [Configuration](25-Configuration.md)
+* [DefensiveCoding](26-DefensiveCoding.md)
