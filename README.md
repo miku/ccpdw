@@ -1,6 +1,6 @@
 # Notes on Clean Code with Python
 
-Ideas, techniques and tools to improve Python code.
+Ideas, techniques and tools to improve Python code. Material as PDF: [20220907-CCPYDW.pdf](20220907-CCPYDW.pdf).
 
 * [Introduction](01-Introduction.md)
 * [Overview](02-Overview.md)
